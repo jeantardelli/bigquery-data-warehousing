@@ -1,0 +1,11 @@
+: << 'COMMENT'
+
+Once the gcloud tool is functioning, we can easily make a new project.
+
+Assuming the name is not taken, the following commands will create the new project automatically and
+activate it.
+
+COMMENT
+
+gcloud projects create ${PROJECT_NAME}
+gcloud config set project ${PROJECT_NAME}
