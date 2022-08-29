@@ -1,0 +1,10 @@
+: << 'COMMENT'
+
+It is possible to access the cloud shell VM even from the local gcloud instance.
+This is another way of copying files between our local machine and the cloud
+instance or if we want to use a persistent machine across multiple client machines. To
+do this, run:
+
+COMMENT
+
+gcloud alpha cloud-shell ssh

@@ -1,0 +1,20 @@
+: << 'COMMENT'
+
+It’s also useful to have gcloud installed on our local machine
+so we can do maintenance on our GCP instances without spinning up
+the cloud shell.
+
+After installing edit your ~/.bashrc or ~/.bash_profile and add the
+path to the source file:
+
+export PATH="$HOME/google-cloud-sdk/bin:$PATH"
+
+Then, to initialize it, run:
+
+$ gcloud init
+
+COMMENT
+
+curl https://sdk.cloud.google.com > install.sh
+bash install.sh --disable-prompts
+
