@@ -1,0 +1,11 @@
+: << 'COMMENT'
+
+To test the BigQuery API is running, we can use the following command.
+
+This command will show us all of the datasets we have in our project, which will
+also confirm that our project is set properly, our connection is working, and we have
+a successful gcloud installation.
+
+COMMENT
+
+bq ls

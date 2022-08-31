@@ -1,0 +1,7 @@
+: << 'COMMENT'
+
+The cp command allows us to copy an entire table.
+
+COMMENT
+
+bq cp ${SOURCE_DATASET}.${SOURCE_TABLE} ${DESTINATION_TABLE}.${DESTINATION_TABLE}

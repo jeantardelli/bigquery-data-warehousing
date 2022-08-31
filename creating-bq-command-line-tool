@@ -1,0 +1,14 @@
+: << 'COMMENT'
+
+The mk command allows us to create datasets and tables. When making tables, we
+have the same options as when we use the UI. We can also specify a schema as a
+command-line parameter, either inline or from a file, using the same format as for
+loading data. For example, to make a new table with a string column, we can use
+the following command.
+
+To use a schema file, we can replace the final parameter with a path to a JSON. The
+JSON is in the same format used by the UI.
+
+COMMENT
+
+bq mk --table ${DATASET}.${TABLE} ${FIELD_ONE}:${FIELD_ONE_TYPE},${FIELD_TWO}:${FIELD_TWO_TYPE}

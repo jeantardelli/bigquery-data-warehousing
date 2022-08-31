@@ -1,0 +1,19 @@
+: << 'COMMENT'
+
+It’s very common to load data from the command line or API instead of using the UI. The
+UI can accept file uploads only up to 10 MB, and larger files have to be staged through
+Google Cloud Storage first. Using the command line, we can load our file directly.
+
+As with the UI, we can use all of the same formats, including CSV, Avro, Parquet,
+JSON(L), and so on. A basic load command looks like the following.
+
+COMMENT
+
+bq load ${DATASET}.${TABLE} ${PATH_TO_FILE} ${FIELD_ONE}:${FIELD_ONE_TYPE},${FIELD_TWO}:${FIELD_TWO_TYPE}
+
+: << 'COMMENT'
+
+A Google Cloud Storage URL can be used in place of the file. The command will
+automatically create the table if it doesn’t exist.
+
+COMMENT
