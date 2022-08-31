@@ -1,0 +1,14 @@
+: << 'COMMENT'
+
+Once we’ve finished playing around with bq, we can wipe our dataset and all its tables
+with the rm command.
+
+COMMENT
+
+bq rm -r ${DATASET}
+
+: << 'COMMENT'
+
+The above command will remove the dataset by that name.
+
+COMMENT

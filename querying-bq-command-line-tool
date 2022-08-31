@@ -1,0 +1,21 @@
+: << 'COMMENT'
+
+Running a query using bq uses the “query” command.
+
+By default, we’ll get a text rendering of the results. Using the --format flag, we can
+specify the return in another format, including JSON, CSV, and pretty-print. CSV and
+JSON are designed to be piped to file or to other locations, as in the command below.
+
+COMMENT
+
+bq query 'SELECT 1 AS value'
+bq query --sync --format csv 'SELECT 1 AS value, "a" AS letter' > results.csv
+
+: << 'COMMENT'
+
+The sync parameter makes the command line wait until the query has completed,
+rather than starting a job in the background. For larger commands, we should omit it
+and poll the job status instead. (The UI also makes jobs in the background, but since we
+are waiting for the results, it doesn’t normally come into play.
+
+COMMENT

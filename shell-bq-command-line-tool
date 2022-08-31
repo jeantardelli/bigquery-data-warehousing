@@ -1,0 +1,17 @@
+: << 'COMMENT'
+
+The bq tool even has its own shell, which we can activate with the following command.
+
+COMMENT
+
+bq shell
+
+: << 'COMMENT'
+
+This allows us to run many statements in sequence without typing the bq each
+time. For queries, we don’t even need to type “query” — we can simply type the query
+directly into the shell.
+
+Other commands, such as ls and mk, can be run directly from the shell as well.
+
+COMMENT

@@ -1,0 +1,19 @@
+: << 'COMMENT'
+
+Undeleting isn’t explicitly supported by the command-line tool, but if we need to
+recover data from a table we accidentally deleted, we can replicate the feature by using
+the same concept as the SQL construct “FOR SYSTEM TIME AS OF.”
+
+We cannot recover a table if we overwrote it with CREATE or REPLACE, and we cannot undelete
+a dataset. The limit for querying past versions of tables is 7 days. If we meet all of these
+criteria, we can use this bash script to recover our data.
+
+The first parameter is the dataset and table we want to recover, and the second parameter is
+how far back we want to go in seconds. The max value is 604800 (one week).
+
+COMMENT
+
+#!/bin/bash
+# Usage: bq dataset-table time-in-seconds
+
+bq cp "$1@$(((`date+%s`-$2)*1000))" $1_recovered
