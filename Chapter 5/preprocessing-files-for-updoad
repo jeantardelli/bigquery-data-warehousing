@@ -1,0 +1,26 @@
+: << 'COMMENT'
+
+If our files are of unknown or poor quality, we will need to do some preprocessing on
+them so they can be loaded to BigQuery. We can do this using the local files, if they’re
+human-readable, accessible, and small enough to operate on. In other cases, we will
+want to load them into a staging table in BigQuery first and then process them into
+another table. Let’s say we have a table of the following format:
+
+Frank,Megan,3,2005-01-03
+Wu,Derek,4,2009-09-04
+Stebbins,Jeff,,2008-07-12
+Myerson,Kate,2,2013-09-03
+
+This data is notably obtuse. There’s no header row, and thus it’s unclear what any of
+these fields mean. The date format is ambiguous and may be YYYY-MM-DD, but could
+just as easily be YYYY-DD-MM. There’s no way we’ll know what we’re looking at without
+clarification. So let’s provide some context clarification. This is a list of names, GPAs, and
+enrollment dates.
+
+Let’s see what BigQuery makes of this file by running the load and showing the
+generated schema.
+
+COMMENT
+
+bq load --project_id=${PROJECT_ID} --autodetect ${DATASET}.${TABLE} ${PATH_TO_FILE}
+bq show --format=prettyjson ${DATASET}.${TABLE}

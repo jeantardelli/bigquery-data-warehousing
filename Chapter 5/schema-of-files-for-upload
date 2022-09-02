@@ -1,0 +1,29 @@
+: << 'COMMENT'
+
+The BigQuery schema format is a JSON file containing an array specifying row names,
+descriptions, and types, for example:
+
+[
+      {
+        "mode": "NULLABLE",
+        "name": "Author",
+        "type": "STRING"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "Title",
+        "type": "STRING"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "LexicalDiversity",
+        "type": "FLOAT"
+      }
+]
+
+For a better example, we can print the schema for any BigQuery table we have
+access to with this command line.
+
+COMMENT
+
+bq show --format=prettyjson ${DATASET}.${TABLE}
