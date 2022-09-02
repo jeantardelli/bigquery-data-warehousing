@@ -1,0 +1,48 @@
+: << 'COMMENT'
+
+We can repair auto detect within BigQuery. Though there’s no way to modify
+columns in BigQuery once the data is already in there, we can create  a new
+table and then delete the old one. 
+
+Let’s write a query that adds column names and fixes the data types. We could
+also take this opportunity to add any additional calculated columns or things
+we will need later. We could also write filters or aggregations if we needed to
+additionally manipulate the data. We can also do this entirely in SQL using a
+Data Definition Language (DDL) statement instead of the command line.
+
+COMMENT
+
+#!/bin/bash
+
+QUERY=\
+"CREATE OR REPLACE TABLE \`${DEST_DATASET}.${DEST_TABLE}\` (
+       LastName STRING NOT NULL,
+       FirstName STRING NOT NULL,
+       GPA NUMERIC,
+       EnrollmentDate DATE NOT NULL,
+       ExpectedGraduationYear INT64 NOT NULL ) AS 
+
+SELECT string_field_0,
+       string_field_1,
+       SAFE_CAST(int64_field_2 AS NUMERIC),
+       date_field_3,
+       EXTRACT(YEAR FROM date_field_3) + 4
+  FROM \`${DATASET}.${TABLE}\`"
+
+bq query --use_legacy_sql=false $QUERY
+
+: << 'COMMENT'
+
+Here, we create a new table with the schema we want, using SQL instead of the
+JSON schema format. We then cast our numeric GPAs into FLOAT64s, using SAFE_CAST
+to ignore the null values. Finally, we calculate an expected graduation date by
+getting the year out of the date field and adding 4.
+
+The last step in this exercise is to delete the old table and copy the temporary table
+back to it. This is easily done on the command line.
+
+COMMENT
+
+bq rm ${DATASET}.${TABLE}
+bq cp --project_id=${PROJECT_ID} ${DEST_DATASET}.${DEST_TABLE} ${DATASET}.${TABLE}
+bq rm ${DEST_DATASET}.${DEST_TABLE}

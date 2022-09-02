@@ -1,0 +1,24 @@
+: << 'COMMENT'
+
+With respect to flat files, there are really only two options: local and Google Cloud
+Storage. Given the 10 MB limit and the vagaries of network connections from our
+local machine to the Google Cloud perimeter, we will generally want to stage our
+files in Cloud Storage first.
+
+While we can create buckets and load files from the Google Cloud Storage UI, in this
+case, a better approach is to become familiar with the command-line syntax for copying
+files to a bucket. This is straightforward.
+
+COMMENT
+
+gsutil -m cp ${SOURCE} gs://${BUCKET}/${LOCATION}
+
+: << 'COMMENT'
+
+The -m switch is optional and allows the copy to run in parallel. If we have
+a reasonably good connection outbound to Google Cloud, this should increase
+performance. A couple of caveats: Slow connections will show worse performance
+because they will saturate, unable to take advantage of extra bandwidth. A parallel
+process will also need to be restarted from the beginning if it fails.
+
+COMMENT
