@@ -1,0 +1,8 @@
+: << 'COMMENT'
+
+This code shows how to upload objects to Cloud Storage bucket
+using the command line gcloud.
+
+COMMENT
+
+gcloud alpha storage cp ${OBJECT_LOCATION} gs://${BUCKET_NAME}

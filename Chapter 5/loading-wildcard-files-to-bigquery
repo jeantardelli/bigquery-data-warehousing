@@ -1,0 +1,27 @@
+: << 'COMMENT'
+
+Thankfully, BigQuery accepts loading of files from a wildcard — we can even specify one
+in the UI. This can be done with local files or from Google Cloud Storage.
+
+COMMENT
+
+bq load --source_format=CSV ${DATASET}.${TABLE} gs://${BUCKET_NAME}/${FILE_PATTERN} ./schema.json
+
+: << 'COMMENT'
+
+This will load all found files into the table in question. Obviously they should all
+share a schema and belong to the same table. We can supply a comma-separated list of
+files to pull in all matching files from multiple directories (or Storage URIs).
+
+When working on the command line, we can take advantage of scripting to process
+the command line before feeding it to BigQuery. The lore of UNIX scripting is decades
+deep, but here’s one tantalizing example for bash, which should be cross-compatible
+with MacOS and Linux:
+
+ls  **/*.csv | sed 's/.*/"&"/' | tr '\n' ','
+
+This example finds all CSV files in all subdirectories below our current working
+directory, quotes them, and concatenates them into a single line. We can use this
+directly as an argument to load files to BigQuery.
+
+COMMENT
