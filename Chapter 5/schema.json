@@ -1,0 +1,27 @@
+[
+  {
+    "name": "LastName",
+    "type": "STRING",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "FirstName",
+    "type": "STRING",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "GPA",
+    "type": "NUMERIC",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "EnrollmentDate",
+    "type": "DATE",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "ExpectedGraduationYear",
+    "type": "INTEGER",
+    "mode": "REQUIRED"
+  }
+]

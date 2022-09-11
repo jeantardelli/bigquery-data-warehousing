@@ -1,0 +1,11 @@
+: << 'COMMENT'
+
+Now that we’ve decided what format we’re going to use, it’s ready to go, and we’ve got
+a schema for it, it’s time to load the data in. This can be done using the command-line
+tool bq load. The command takes a huge variety of flags which vary based on type, but
+the basic structure will look like this. This loads a CSV file with a schema we generated in
+the previous step.
+
+COMMENT
+
+bq load --source_format=CSV --max_bad_records=1 ${DATASET}.${TABLE} gs://${BUCKET_NAME}/${BUCKET_FILE_NAME} ./schema.json
