@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <p>Enter your string for streaming here</p>
+        <form id="go-form" action={{ url_for(stream) }} method="POST" >
+          {{ form.string.label }} 
+          {{ form.string() }}
+        <button id="go-btn" type="submit">Go</button>
+        </form>
+        <p id="log"></p>
+{% endblock %}

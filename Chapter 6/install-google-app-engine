@@ -1,0 +1,10 @@
+: << 'COMMENT'
+
+To install the Python App Engine components in our ocal machine we need
+to execute the following code. Note: the cloud shell already has App Engine
+support. We may also need to prefix “sudo” to obtain elevated privileges
+
+COMMENT
+
+gcloud app create --project=big-query-for-data-warehousing
+gcloud components install app-engine-python

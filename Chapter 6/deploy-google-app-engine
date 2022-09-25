@@ -1,0 +1,8 @@
+: << 'COMMENT'
+
+All we need to do after creating the appropriate files is sit back and
+deploy to Google App Engine. We do that as follows:
+
+COMMENT
+
+gcloud app deploy
