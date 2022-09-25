@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{ title }}</title>
+</head>
+<body>
+	<div class="container">
+		<h1>{{ title }}</h1>
+		{% block content %}
+		{% endblock %}
+
+  </div>
+  <script type="application/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
