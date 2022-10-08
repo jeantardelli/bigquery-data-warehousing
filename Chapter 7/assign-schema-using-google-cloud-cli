@@ -1,0 +1,2 @@
+gcloud components update
+gcloud data-catalog entries update --lookup-entry='pubsub.topic.`${PROJECT_ID}`.transactions' --schema-from-file=${PATH_TO_FILE}/transactions_schema.yaml
