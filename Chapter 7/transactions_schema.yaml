@@ -1,0 +1,32 @@
+- column: event_timestamp
+  description: Pub/Sub event timestamp
+  mode: REQUIRED
+  type: TIMESTAMP
+- column: tr_time_str
+  description: Transaction time string
+  mode: NULLABLE
+  type: STRING
+- column: first_name
+  description: First name
+  mode: NULLABLE
+  type: STRING
+- column: last_name
+  description: Last name
+  mode: NULLABLE
+  type: STRING
+- column: city
+  description: City
+  mode: NULLABLE
+  type: STRING
+- column: state
+  description: State
+  mode: NULLABLE
+  type: STRING
+- column: product
+  description: Product
+  mode: NULLABLE
+  type: STRING
+- column: amount
+  description: Amount of transaction
+  mode: NULLABLE
+  type: FLOAT
